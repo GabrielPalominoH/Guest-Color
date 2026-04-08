@@ -30,9 +30,8 @@
 }
 
 @media (max-width: 768px) {
-  .app-container, .app-main {
-    padding: 0;
-    background-color: #000;
+  .app-main {
+    padding: 20px 0;
   }
   
   .app-header {

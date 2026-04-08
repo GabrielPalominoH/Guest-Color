@@ -101,6 +101,6 @@
 /* Mobile full-height adjustment */
 @media (max-width: 600px) {
   .color-slider {
-    width: 100vh;
+    width: var(--mobile-card-height, 80vh);
   }
 }

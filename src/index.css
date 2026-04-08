@@ -9,6 +9,8 @@
   --transition-fast: 0.15s ease-out;
   --transition-normal: 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   --transition-slow: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  
+  --mobile-card-height: 80vh;
 }
 
 [data-theme='dark'] {
