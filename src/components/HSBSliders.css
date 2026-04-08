@@ -1,0 +1,106 @@
+.hsb-sliders-container {
+  display: flex;
+  height: 100%;
+  width: 90px;
+}
+
+.slider-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* removed overflow: hidden so expanded slider thumbs remain visible */
+}
+
+.hue-wrapper {
+  background: linear-gradient(
+    to top,
+    hsl(0, 100%, 50%),
+    hsl(30, 100%, 50%),
+    hsl(60, 100%, 50%),
+    hsl(90, 100%, 50%),
+    hsl(120, 100%, 50%),
+    hsl(150, 100%, 50%),
+    hsl(180, 100%, 50%),
+    hsl(210, 100%, 50%),
+    hsl(240, 100%, 50%),
+    hsl(270, 100%, 50%),
+    hsl(300, 100%, 50%),
+    hsl(330, 100%, 50%),
+    hsl(360, 100%, 50%)
+  );
+}
+
+/* Saturation and Brightness gradients are set by inline CSS in the component */
+
+/* The actual range input, rotated */
+.color-slider {
+  appearance: none;
+  background: transparent;
+  /* The wrapper is tall (card-size), and narrow. Since this is absolute, 
+     width actually maps to wrapper's height. 
+     We use a dynamic approach to ensure it covers the full range on all screens. */
+  width: var(--slider-length, 500px); 
+  height: 30px; /* Restrict thickness to exactly fit the wrapper width */
+  position: absolute;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+  outline: none;
+  margin: 0;
+  cursor: pointer;
+}
+
+
+/* Customizing the thumb */
+.color-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  cursor: grab;
+  /* To center the thumb on the track correctly when rotated, ensure margin is right */
+  margin-top: 0; 
+  transition: transform 0.1s;
+}
+
+.color-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  cursor: grab;
+  transition: transform 0.1s;
+}
+
+.color-slider:active::-webkit-slider-thumb {
+  cursor: grabbing;
+  transform: scale(1.1);
+}
+
+.color-slider:active::-moz-range-thumb {
+  cursor: grabbing;
+  transform: scale(1.1);
+}
+
+/* Hide track for webkit/moz since the wrapper is the track */
+.color-slider::-webkit-slider-runnable-track {
+  background: transparent;
+  border: none;
+}
+.color-slider::-moz-range-track {
+  background: transparent;
+  border: none;
+}
+
+/* Mobile full-height adjustment */
+@media (max-width: 600px) {
+  .color-slider {
+    width: 100vh;
+  }
+}
